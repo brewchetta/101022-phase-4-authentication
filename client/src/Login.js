@@ -8,34 +8,12 @@ function Login({user, setUser}) {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    fetch('/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accepts': 'application/json'
-      },
-      body: JSON.stringify({ username, password })
-    })
-    .then(res => {
-      if (res.ok) {
-        res.json()
-          .then(data => {
-            console.log(data)
-            setError('')
-            setUser(data)
-          })
-      } else {
-        res.json()
-        .then(({error}) => setError(error))
-      }
-    })
-
   }
 
   const handleChangeUsername = e => setUsername(e.target.value)
   const handleChangePassword = e => setPassword(e.target.value)
 
-  if (user.id) {
+  if (user && user.id) {
     return (
       <div>
       Already logged in!

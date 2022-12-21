@@ -8,28 +8,6 @@ function Signup({user, setUser}) {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    e.preventDefault()
-    fetch('/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accepts': 'application/json'
-      },
-      body: JSON.stringify({ username, password })
-    })
-    .then(res => {
-      if (res.ok) {
-        res.json()
-          .then(data => {
-            console.log(data)
-            setErrors([])
-            setUser(data)
-          })
-      } else {
-        res.json()
-        .then(({errors}) => setErrors(errors))
-      }
-    })
   }
 
   const handleChangeUsername = e => setUsername(e.target.value)

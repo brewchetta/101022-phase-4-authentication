@@ -8,22 +8,7 @@ function App() {
 
   const [user, setUser] = useState({})
 
-  useEffect(() => {
-    fetch('/me')
-    .then(res => {
-
-      if (res.ok) {
-        res.json()
-        .then(data => {
-          setUser(data)
-        })
-      }
-
-    })
-  }, [])
-
   const handleLogout = () => {
-    fetch('/logout', {method: 'DELETE'})
     setUser({})
   }
 
