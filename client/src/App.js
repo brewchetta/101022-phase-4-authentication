@@ -8,8 +8,25 @@ function App() {
 
   const [user, setUser] = useState({})
 
+  useEffect(() => {
+    fetch("/me")
+    .then( res => {
+      if (res.ok) {
+        res.json()
+        .then( data => {
+          setUser( data )
+        })
+      } else {
+        // navigate('/signup')
+      }
+    } )
+  }, [])
+
   const handleLogout = () => {
     setUser({})
+    fetch('/logout', {
+      method: 'DELETE'
+    })
   }
 
   return (

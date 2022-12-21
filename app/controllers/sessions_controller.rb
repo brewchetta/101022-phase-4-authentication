@@ -14,7 +14,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-
+        session.delete :user_id
+        render json: { message: "You've been logged out, byeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!" }
     end
 
 end
