@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    # rescue_from
+    skip_before_action :check_user, only: [:create]
 
     def show
         user = User.find_by(id: session[:user_id])
@@ -10,6 +10,7 @@ class UsersController < ApplicationController
         end
     end
 
+    # signup
     def create
         user = User.create!(user_params)
         session[:user_id] = user.id
